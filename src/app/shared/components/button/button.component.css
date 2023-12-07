@@ -1,0 +1,20 @@
+.btn {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 1px solid var(--black-25);
+  border-radius: 0.5rem;
+  transition: opacity 0.2s;
+
+  &.btn-fill {
+    &.btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: var(--white);
+    }
+  }
+
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
