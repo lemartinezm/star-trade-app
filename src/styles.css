@@ -9,6 +9,16 @@
   --white: #ffffff;
   --primary-color: #8e59ff;
   --background-light: #f5f7f9;
+  --purple: #8e59ff;
+  --purple-pastel: #f2eeff;
+  --blue: #4b80ff;
+  --blue-pastel: #ebf3fe;
+  --red: #fe6161;
+  --red-pastel: #ffeef1;
+  --green: #50cf7c;
+  --green-pastel: #ecf8ef;
+  --yellow: #ffae4b;
+  --yellow-pastel: #fff3e5;
 }
 
 html {

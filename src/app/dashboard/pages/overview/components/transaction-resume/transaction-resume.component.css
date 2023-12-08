@@ -1,0 +1,27 @@
+.transaction-resume-container {
+  display: flex;
+  gap: 0.5rem;
+
+  & .transaction-resume-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.arrow-container-green {
+  display: grid;
+  place-items: center;
+  background-color: var(--green);
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+}
+
+.arrow-container-red {
+  display: grid;
+  place-items: center;
+  background-color: var(--red);
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+}

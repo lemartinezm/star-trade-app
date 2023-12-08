@@ -1,0 +1,28 @@
+<article class="transaction-resume-container">
+  @if (type === "income") {
+  <div class="arrow-container-green">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+      viewBox="0 0 24 24">
+      <path fill="white"
+        d="M11 4h2v12l5.5-5.5l1.42 1.42L12 19.84l-7.92-7.92L5.5 10.5L11 16V4Z" />
+    </svg>
+  </div>
+  } @else {
+  <div class="arrow-container-red">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+      viewBox="0 0 24 24"><g transform="translate(0 24) scale(1 -1)">
+        <path
+          fill="white"
+          d="M11 4h2v12l5.5-5.5l1.42 1.42L12 19.84l-7.92-7.92L5.5 10.5L11 16V4Z" />
+      </g>
+    </svg>
+  </div>
+  }
+  <div class="transaction-resume-details">
+    <p>Account number</p>
+    <p>Amount</p>
+    <p>Date</p>
+    <p>Currency</p>
+  </div>
+  <div>State</div>
+</article>
