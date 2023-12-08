@@ -8,6 +8,7 @@
   --black-5: #f3f3f3;
   --white: #ffffff;
   --primary-color: #8e59ff;
+  --background-light: #f5f7f9;
 }
 
 html {
@@ -20,4 +21,8 @@ html {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+li {
+  list-style: none;
 }
