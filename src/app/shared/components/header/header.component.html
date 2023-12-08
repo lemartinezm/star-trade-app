@@ -3,10 +3,22 @@
     width="48" height="48">
   <nav>
     <ul>
-      <li>Overview</li>
-      <li>Accounts</li>
-      <li>Transactions</li>
-      <li>Contacts</li>
+      <li>
+        <a routerLink="/" routerLinkActive="link-active"
+          [routerLinkActiveOptions]="{exact: true}">Overview</a>
+      </li>
+      <li>
+        <a routerLink="/accounts" routerLinkActive="link-active"
+          [routerLinkActiveOptions]="{exact: true}">Accounts</a>
+      </li>
+      <li>
+        <a routerLink="/transactions" routerLinkActive="link-active"
+          [routerLinkActiveOptions]="{exact: true}">Transactions</a>
+      </li>
+      <li>
+        <a routerLink="/contacts" routerLinkActive="link-active"
+          [routerLinkActiveOptions]="{exact: true}">Contacts</a>
+      </li>
     </ul>
   </nav>
   <div>
