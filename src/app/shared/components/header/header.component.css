@@ -1,4 +1,4 @@
-header {
+.header {
   background-color: var(--white);
   display: flex;
   flex-direction: column;
@@ -12,10 +12,10 @@ header {
   transform: translateY(-100%);
   transition: transform 0.2s;
   min-height: 100vh;
-}
 
-header.active {
-  transform: translateY(0);
+  &.active {
+    transform: translateY(0);
+  }
 }
 
 nav ul {
@@ -114,4 +114,30 @@ div ul {
 .toggle-menu.active i:nth-child(3) {
   transform: rotateZ(45deg);
   top: 11px;
+}
+
+@media screen and (width >= 768px) {
+  .toggle-menu {
+    display: none;
+  }
+
+  .header {
+    transform: none;
+    min-height: auto;
+    flex-direction: row;
+    width: 100%;
+    padding: 1rem 2rem;
+    gap: 3rem;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  nav ul {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  nav {
+    flex: 1;
+  }
 }
