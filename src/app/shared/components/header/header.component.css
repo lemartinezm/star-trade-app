@@ -122,6 +122,7 @@ div ul {
   }
 
   .header {
+    position: static;
     transform: none;
     min-height: auto;
     flex-direction: row;
