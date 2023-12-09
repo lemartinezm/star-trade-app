@@ -12,6 +12,7 @@ export class ButtonComponent {
   @Input() text = '';
   @Input() variant: 'fill' | 'outline' = 'fill';
   @Input() color: 'primary' | 'secondary' = 'primary';
+  @Input() type: 'button' | 'submit' = 'button';
 
   ngOnInit() {
     if (this.variant) this.class += ` btn-${this.variant}`;

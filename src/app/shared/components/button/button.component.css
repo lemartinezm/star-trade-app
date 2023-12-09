@@ -4,6 +4,9 @@
   border: 1px solid var(--black-25);
   border-radius: 0.5rem;
   transition: opacity 0.2s;
+  font-size: 1rem;
+  width: 100%;
+  font-weight: 500;
 
   &.btn-fill {
     &.btn-primary {
