@@ -3,4 +3,5 @@
   font-size: 1rem;
   border-radius: 0.5rem;
   border: 1px solid var(--black-25);
+  width: 100%;
 }
