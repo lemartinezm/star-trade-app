@@ -11,5 +11,5 @@ import { Component, Input } from '@angular/core';
 export class SelectComponent {
   @Input() options: { label: string; value: string }[] = [];
   @Input() name: string = '';
-  @Input() id: string = '';
+  @Input() selectId: string = '';
 }
