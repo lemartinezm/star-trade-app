@@ -1,0 +1,24 @@
+<section class="total-balance-container">
+  <h3 class="total-balance-title">My Balance</h3>
+  <app-select name="balanceResume" selectId="balanceResume" [options]="options"></app-select>
+  <div class="balance-container">
+    <p class="balance-currency">
+      <span>$</span>
+      <span>U.S. Dollar</span>
+      <span>USD</span>
+    </p>
+    <p class="account-balance">Total Balance</p>
+    <p class="total-balance">
+      <span>400.44</span>
+      <span class="arrow-container-green">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24"><g transform="translate(0 24) scale(1 -1)">
+            <path
+              fill="white"
+              d="M11 4h2v12l5.5-5.5l1.42 1.42L12 19.84l-7.92-7.92L5.5 10.5L11 16V4Z" />
+          </g>
+        </svg>
+      </span>
+    </p>
+  </div>
+</section>
