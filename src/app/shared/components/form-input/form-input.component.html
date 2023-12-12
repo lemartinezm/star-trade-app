@@ -1,5 +1,5 @@
 <div class="form-input-container">
   <label [for]="inputId">{{label}}</label>
-  <app-input [inputId]="inputId" [name]="name" [placeholder]="placeholder"
-    [type]="type"></app-input>
+  <input class="input" [id]="inputId" [name]="name" [placeholder]="placeholder"
+    [type]="type" [formControl]="inputControl" />
 </div>
