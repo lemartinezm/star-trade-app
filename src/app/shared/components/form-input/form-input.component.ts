@@ -18,6 +18,6 @@ export class FormInputComponent implements OnInit {
   inputControl = new FormControl('');
 
   ngOnInit() {
-    this.parentFormGroup.addControl(this.name, this.inputControl);
+    this.parentFormGroup.setControl(this.name, this.inputControl);
   }
 }
