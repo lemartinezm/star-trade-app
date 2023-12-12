@@ -1,9 +1,13 @@
 <div class="login-container">
   <h2>Sign In</h2>
-  <app-form-input inputId="email" name="email" label="Email"
-    placeholder="example@email.com"></app-form-input>
-  <app-form-input inputId="password" name="password" label="Password"
-    placeholder="********"></app-form-input>
-
-  <app-button text="Log In" variant="fill" color="primary"></app-button>
+  <form class="login-form" [formGroup]="loginFormGroup"
+    (ngSubmit)="handleSubmit()">
+    <app-form-input inputId="email" label="Email" name="email"
+      placeholder="example@email.com" type="email"
+      [inputControl]="loginFormGroup.controls.email"></app-form-input>
+    <app-form-input inputId="password" label="Password" name="password"
+      placeholder="**********" type="password"
+      [inputControl]="loginFormGroup.controls.password"></app-form-input>
+    <app-button text="Log In" variant="fill" color="primary" type="submit"></app-button>
+  </form>
 </div>
