@@ -1,6 +1,7 @@
 <section class="total-balance-container">
   <h3 class="total-balance-title">My Balance</h3>
-  <app-select name="balanceResume" selectId="balanceResume" [options]="options"></app-select>
+  <app-select name="balanceResume" selectId="balanceResume" [options]="options"
+    (valueChange)="handleChangeAccount($event)"></app-select>
   <div class="balance-container">
     <p class="balance-currency">
       <span>$</span>
@@ -9,7 +10,7 @@
     </p>
     <p class="account-balance">Total Balance</p>
     <p class="total-balance">
-      <span>400.44</span>
+      <span>{{accountSelected.balance}}</span>
       <span class="arrow-container-green">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
           viewBox="0 0 24 24"><g transform="translate(0 24) scale(1 -1)">

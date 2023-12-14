@@ -1,16 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SelectComponent } from '../../../../../shared/components/select/select.component';
+import { BalanceResumeService } from './balance-resume.service';
+import { Account } from '../../interfaces/account.interface';
 
 @Component({
   selector: 'app-balance-resume',
   standalone: true,
   imports: [SelectComponent],
+  providers: [BalanceResumeService],
   templateUrl: './balance-resume.component.html',
   styleUrl: './balance-resume.component.css',
 })
-export class BalanceResumeComponent {
-  options: { value: string; label: string }[] = [
-    { label: 'Account 1', value: 'Account 1' },
-    { label: 'Account 2', value: 'Account 2' },
-  ];
+export class BalanceResumeComponent implements OnInit {
+  accounts: Account[] = [];
+  accountSelected: Account = {
+    id: 0,
+    accountNumber: '00000000000000000000000',
+    balance: '0.00',
+    createdAt: '',
+  };
+  options: { value: string; label: string }[] = [];
+
+  constructor(private balanceResumeService: BalanceResumeService) {}
+
+  ngOnInit() {
+    this.balanceResumeService.getAccounts().subscribe({
+      next: (accounts) => {
+        this.accounts = [...accounts];
+        this.accountSelected = accounts[0];
+        this.options = accounts.map((account) => ({
+          label: account.accountNumber,
+          value: account.accountNumber,
+        }));
+      },
+      error: (err) => console.error(err),
+    });
+  }
+
+  handleChangeAccount(accountNumber: string) {
+    const newAccountSelected = this.accounts.find(
+      (account) => account.accountNumber === accountNumber
+    );
+    if (newAccountSelected) this.accountSelected = newAccountSelected;
+  }
 }

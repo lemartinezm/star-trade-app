@@ -1,5 +1,5 @@
 import { NgFor } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-select',
@@ -12,4 +12,10 @@ export class SelectComponent {
   @Input() options: { label: string; value: string }[] = [];
   @Input() name: string = '';
   @Input() selectId: string = '';
+  @Output() valueChange = new EventEmitter<string>();
+
+  handleSelectChange(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    this.valueChange.emit(target.value);
+  }
 }
