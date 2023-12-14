@@ -22,4 +22,15 @@ export class LoginService {
         error: (err) => console.error(err),
       });
   }
+
+  verifyToken(token: string) {
+    return this.http.get<{ message: string }>(
+      'http://localhost:3000/auth/token',
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  }
 }
