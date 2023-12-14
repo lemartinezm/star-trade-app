@@ -3,14 +3,14 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OverviewComponent } from './dashboard/pages/overview/overview.component';
 import { TransactionsComponent } from './dashboard/pages/transactions/transactions.component';
-import { loginGuard } from './login/login.guard';
+import { dashboardGuard } from './dashboard/dashboard.guard';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {
     path: '',
     component: DashboardComponent,
-    canActivateChild: [loginGuard],
+    canActivateChild: [dashboardGuard],
     children: [
       { path: '', component: OverviewComponent },
       { path: 'transactions', component: TransactionsComponent },

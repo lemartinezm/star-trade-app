@@ -1,9 +1,9 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { LoginService } from './login.service';
+import { DashboardService } from './dashboard.service';
 
-export const loginGuard: CanActivateFn = async (route, state) => {
-  const loginService = inject(LoginService);
+export const dashboardGuard: CanActivateFn = async (route, state) => {
+  const dashboardService = inject(DashboardService);
   const router = inject(Router);
 
   if (typeof localStorage !== 'undefined') {
@@ -14,7 +14,7 @@ export const loginGuard: CanActivateFn = async (route, state) => {
     }
 
     const verityToken = new Promise<boolean>((resolve) => {
-      loginService.verifyToken(token).subscribe({
+      dashboardService.verifyToken(token).subscribe({
         next: () => {
           resolve(true);
         },
