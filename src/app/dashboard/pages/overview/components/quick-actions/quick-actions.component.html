@@ -1,16 +1,32 @@
 <section class="quick-actions-container">
   <h3 class="quick-actions-title">Quick Actions</h3>
-  <div class="quick-actions-selector">
-    <button class="quick-action active">Send</button>
-    <button class="quick-action">Receive</button>
-  </div>
-  <form class="form-container">
+  <form class="form-container" [formGroup]="formGroup"
+    (ngSubmit)="handleSubmit()">
+    <div class="quick-actions-selector">
+      <label
+        [ngClass]="['quick-action', activeButton === 'send' ? 'active' : '']"
+        (click)="handleChangeActionType($event)">
+        Send
+        <input type="radio" name="quickActionType" id="quickActionSend"
+          value="send" hidden [formControl]="formGroup.controls.type">
+      </label>
+      <label
+        [ngClass]="['quick-action', activeButton === 'receive' ? 'active' : '']"
+        (click)="handleChangeActionType($event)">
+        Receive
+        <input type="radio" name="quickActionType" id="quickActionReceive"
+          value="receive" hidden [formControl]="formGroup.controls.type">
+      </label>
+    </div>
     <app-form-select [options]="sourceAccountOptions" label="Source Account"
-      formSelectId="sourceAccount"></app-form-select>
+      formSelectId="sourceAccount" name="sourceAccount"
+      [selectControl]="formGroup.controls.sourceAccount"></app-form-select>
     <app-form-input inputId="destinationAccount" label="Destination Account"
-      name="destinationAccount" placeholder="Account Number" type="text"></app-form-input>
+      name="destinationAccount" placeholder="Account Number" type="text"
+      [inputControl]="formGroup.controls.destinationAccount"></app-form-input>
     <app-form-input inputId="amount" label="Amount"
-      name="amount" placeholder="Amount" type="number"></app-form-input>
+      name="amount" placeholder="Amount" type="number"
+      [inputControl]="formGroup.controls.amount"></app-form-input>
     <app-button text="Send now" type="submit"></app-button>
   </form>
 </section>
