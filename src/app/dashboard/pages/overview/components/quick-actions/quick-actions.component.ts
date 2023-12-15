@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormSelectComponent } from '../../../../../shared/components/form/form-select/form-select.component';
 import { FormInputComponent } from '../../../../../shared/components/form-input/form-input.component';
 import { ButtonComponent } from '../../../../../shared/components/button/button.component';
+import { OverviewService } from '../../overview.service';
 
 @Component({
   selector: 'app-quick-actions',
@@ -10,10 +11,17 @@ import { ButtonComponent } from '../../../../../shared/components/button/button.
   templateUrl: './quick-actions.component.html',
   styleUrl: './quick-actions.component.css',
 })
-export class QuickActionsComponent {
-  sourceAccountOptions: { label: string; value: string }[] = [
-    { label: 'Account 1', value: 'account1' },
-    { label: 'Account 2', value: 'account2' },
-    { label: 'Account 3', value: 'account3' },
-  ];
+export class QuickActionsComponent implements OnInit {
+  sourceAccountOptions: { label: string; value: string }[] = [];
+
+  constructor(private overviewService: OverviewService) {}
+
+  ngOnInit(): void {
+    this.overviewService.userAccounts.subscribe((accounts) => {
+      this.sourceAccountOptions = accounts.map((account) => ({
+        label: account.accountNumber,
+        value: account.accountNumber,
+      }));
+    });
+  }
 }
