@@ -1,6 +1,6 @@
 <div class="form-select-container">
   <label [for]="formSelectId">{{label}}</label>
-  <select [name]="name" [id]="selectId" [formControl]="selectControl">
+  <select [name]="name" [id]="formSelectId" [formControl]="selectControl">
     @for (option of options; track option.value) {
     <option [value]="option.value">{{option.label}}</option>
     }

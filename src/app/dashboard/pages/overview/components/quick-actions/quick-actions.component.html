@@ -18,12 +18,22 @@
           value="receive" hidden [formControl]="formGroup.controls.type">
       </label>
     </div>
-    <app-form-select [options]="sourceAccountOptions" label="Source Account"
+    @if (activeButton === 'send') {
+    <app-form-select [options]="accountOptions" label="Source Account"
       formSelectId="sourceAccount" name="sourceAccount"
       [selectControl]="formGroup.controls.sourceAccount"></app-form-select>
     <app-form-input inputId="destinationAccount" label="Destination Account"
       name="destinationAccount" placeholder="Account Number" type="text"
       [inputControl]="formGroup.controls.destinationAccount"></app-form-input>
+    } @else {
+    <app-form-select [options]="accountOptions"
+      label="Destination Account"
+      formSelectId="destinationAccount" name="destinationAccount"
+      [selectControl]="formGroup.controls.destinationAccount"></app-form-select>
+    <app-form-input inputId="sourceAccount" label="Source Account"
+      name="sourceAccount" placeholder="Source Account" type="text"
+      [inputControl]="formGroup.controls.sourceAccount"></app-form-input>
+    }
     <app-form-input inputId="amount" label="Amount"
       name="amount" placeholder="Amount" type="number"
       [inputControl]="formGroup.controls.amount"></app-form-input>

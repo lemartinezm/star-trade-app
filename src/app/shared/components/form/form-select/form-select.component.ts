@@ -15,5 +15,4 @@ export class FormSelectComponent {
   @Input() formSelectId: string = '';
   @Input() label: string = '';
   @Input() selectControl!: FormControl;
-  @Input() selectId: string = '';
 }

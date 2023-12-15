@@ -26,7 +26,7 @@ import { QuickActionsService } from './quick-actions.service';
   styleUrl: './quick-actions.component.css',
 })
 export class QuickActionsComponent implements OnInit {
-  sourceAccountOptions: { label: string; value: string }[] = [];
+  accountOptions: { label: string; value: string }[] = [];
   activeButton: string = 'send';
   formGroup = new FormGroup({
     type: new FormControl('send'),
@@ -42,11 +42,10 @@ export class QuickActionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.overviewService.userAccounts.subscribe((accounts) => {
-      this.sourceAccountOptions = accounts.map((account) => ({
+      this.accountOptions = accounts.map((account) => ({
         label: account.accountNumber,
         value: account.accountNumber,
       }));
-      this.formGroup.controls.sourceAccount.setValue(accounts[0].accountNumber);
     });
   }
 

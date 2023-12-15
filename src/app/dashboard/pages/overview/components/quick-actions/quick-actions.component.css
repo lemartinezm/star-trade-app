@@ -23,7 +23,6 @@
     & .quick-action {
       position: relative;
       cursor: pointer;
-      border: none;
       font-size: 1rem;
       background-color: transparent;
       font-weight: 500;
@@ -32,6 +31,8 @@
       flex: 1;
       color: var(--black-50);
       text-align: center;
+      transition: all 0.2s;
+      border: 1px solid transparent;
 
       & input {
         opacity: 0;
