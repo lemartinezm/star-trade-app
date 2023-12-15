@@ -1,10 +1,55 @@
-.transaction-resume-container {
+.transactions-resume-section-container {
   display: flex;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--white);
+  padding: 1rem;
+  border-radius: 0.5rem;
 
-  & .transaction-resume-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  & .transactions-resume-title {
+    font-weight: 500;
+  }
+
+  & .transactions-resume-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    & .transaction-resume-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      column-gap: 1.5rem;
+      row-gap: 0.5rem;
+      flex-wrap: wrap;
+
+      & .transaction-resume-details {
+        flex: auto;
+        display: grid;
+        grid-template-columns: auto auto;
+        column-gap: 1.5rem;
+        row-gap: 0.5rem;
+
+        & .transaction-resume-amount {
+          font-weight: 500;
+        }
+
+        & .transaction-resume-date,
+        .transaction-resume-currency {
+          color: var(--black-50);
+          font-weight: 500;
+        }
+      }
+
+      & .transaction-resume-status {
+        text-transform: capitalize;
+        background-color: var(--green-pastel);
+        color: var(--green);
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+      }
+    }
   }
 }
 
@@ -13,8 +58,8 @@
   place-items: center;
   background-color: var(--green);
   border-radius: 50%;
-  height: 2rem;
-  width: 2rem;
+  min-height: 2rem;
+  min-width: 2rem;
 }
 
 .arrow-container-red {
@@ -22,6 +67,6 @@
   place-items: center;
   background-color: var(--red);
   border-radius: 50%;
-  height: 2rem;
-  width: 2rem;
+  min-height: 2rem;
+  min-width: 2rem;
 }

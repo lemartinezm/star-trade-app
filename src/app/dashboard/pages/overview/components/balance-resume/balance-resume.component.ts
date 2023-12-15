@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SelectComponent } from '../../../../../shared/components/select/select.component';
 import { BalanceResumeService } from './balance-resume.service';
 import { Account } from '../../interfaces/account.interface';
+import { OverviewService } from '../../overview.service';
 
 @Component({
   selector: 'app-balance-resume',
@@ -21,7 +22,10 @@ export class BalanceResumeComponent implements OnInit {
   };
   options: { value: string; label: string }[] = [];
 
-  constructor(private balanceResumeService: BalanceResumeService) {}
+  constructor(
+    private balanceResumeService: BalanceResumeService,
+    private overviewService: OverviewService
+  ) {}
 
   ngOnInit() {
     this.balanceResumeService.getAccounts().subscribe({
@@ -32,6 +36,7 @@ export class BalanceResumeComponent implements OnInit {
           label: account.accountNumber,
           value: account.accountNumber,
         }));
+        this.overviewService.updateState(accounts[0].accountNumber);
       },
       error: (err) => console.error(err),
     });
@@ -41,6 +46,9 @@ export class BalanceResumeComponent implements OnInit {
     const newAccountSelected = this.accounts.find(
       (account) => account.accountNumber === accountNumber
     );
-    if (newAccountSelected) this.accountSelected = newAccountSelected;
+    if (newAccountSelected) {
+      this.accountSelected = newAccountSelected;
+      this.overviewService.updateState(newAccountSelected.accountNumber);
+    }
   }
 }
