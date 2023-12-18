@@ -28,7 +28,7 @@ export class BalanceResumeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.overviewService.userAccounts.subscribe({
+    this.balanceResumeService.getAccounts().subscribe({
       next: (accounts) => {
         this.accounts = [...accounts];
         this.accountSelected = accounts[0];
@@ -37,11 +37,6 @@ export class BalanceResumeComponent implements OnInit {
           value: account.accountNumber,
         }));
         this.overviewService.updateState(accounts[0].accountNumber);
-      },
-    });
-
-    this.balanceResumeService.getAccounts().subscribe({
-      next: (accounts) => {
         this.overviewService.updateUserAccounts(accounts);
       },
       error: (err) => console.error(err),
