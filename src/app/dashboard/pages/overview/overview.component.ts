@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TransactionResumeComponent } from './components/transaction-resume/transaction-resume.component';
 import { QuickActionsComponent } from './components/quick-actions/quick-actions.component';
 import { BalanceResumeComponent } from './components/balance-resume/balance-resume.component';
@@ -18,4 +18,12 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.css',
 })
-export class OverviewComponent {}
+export class OverviewComponent implements OnInit {
+  constructor(private overviewService: OverviewService) {}
+
+  ngOnInit(): void {
+    this.overviewService.getTransactionsResume().subscribe((transactions) => {
+      this.overviewService.updateTransactions(transactions);
+    });
+  }
+}

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -7,6 +7,8 @@ import {
   ChartComponent,
   NgApexchartsModule,
 } from 'ng-apexcharts';
+import { OverviewService } from '../../overview.service';
+import { Transaction } from '../../interfaces/transaction.interface';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -22,28 +24,72 @@ export type ChartOptions = {
   templateUrl: './statistics.component.html',
   styleUrl: './statistics.component.css',
 })
-export class StatisticsComponent {
+export class StatisticsComponent implements OnInit {
   @ViewChild('chart') chart!: ChartComponent;
   public chartOptions: ChartOptions;
+  private transactions: Transaction[] = [];
+  private incomeTransactions: Transaction[] = [];
+  private expenseTransactions: Transaction[] = [];
+  private currentAccountNumber: string = '';
 
-  constructor() {
+  constructor(private overviewService: OverviewService) {
     this.chartOptions = {
       series: [
         {
           name: 'My Serie',
-          data: [5, 10, 21, 42, 48, 58],
+          data: [],
         },
       ],
       chart: {
         height: 350,
-        type: 'bar',
+        type: 'line',
       },
       title: {
-        text: 'Statistics',
+        text: 'Incomes and Expenses',
       },
-      xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Jun', 'Jul'],
-      },
+      xaxis: { type: 'datetime' },
     };
+  }
+
+  ngOnInit(): void {
+    this.overviewService.currentState.subscribe((accountNumber) => {
+      this.currentAccountNumber = accountNumber;
+
+      this.incomeTransactions = this.transactions.filter(
+        (transaction) =>
+          transaction.destinationAccount.accountNumber ===
+            this.currentAccountNumber && transaction.status === 'completed'
+      );
+      this.expenseTransactions = this.transactions.filter(
+        (transaction) =>
+          transaction.sourceAccount.accountNumber ===
+            this.currentAccountNumber && transaction.status === 'completed'
+      );
+
+      this.updateChart();
+    });
+
+    this.overviewService.transactions.subscribe((transactions) => {
+      this.transactions = transactions;
+    });
+  }
+
+  updateChart() {
+    this.chartOptions.series = [
+      {
+        name: 'Incomes',
+        data: this.incomeTransactions.map((transactions) => ({
+          x: new Date(transactions.createdAt).getTime(),
+          y: transactions.amount,
+        })),
+      },
+      {
+        name: 'Expenses',
+        data: this.expenseTransactions.map((transactions) => ({
+          x: new Date(transactions.createdAt).getTime(),
+          y: transactions.amount,
+        })),
+      },
+    ];
   }
 }
