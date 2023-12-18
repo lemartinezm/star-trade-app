@@ -3,6 +3,7 @@ import { TransactionResumeComponent } from './components/transaction-resume/tran
 import { QuickActionsComponent } from './components/quick-actions/quick-actions.component';
 import { BalanceResumeComponent } from './components/balance-resume/balance-resume.component';
 import { OverviewService } from './overview.service';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 @Component({
   selector: 'app-overview',
@@ -11,6 +12,7 @@ import { OverviewService } from './overview.service';
     TransactionResumeComponent,
     QuickActionsComponent,
     BalanceResumeComponent,
+    StatisticsComponent,
   ],
   providers: [OverviewService],
   templateUrl: './overview.component.html',
