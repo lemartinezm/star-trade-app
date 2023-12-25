@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TransactionsResumeService } from './transactions-resume.service';
 import { Transaction } from '../../interfaces/transaction.interface';
 import { NgFor } from '@angular/common';
 import { OverviewService } from '../../overview.service';
@@ -10,19 +9,15 @@ import { OverviewService } from '../../overview.service';
   imports: [NgFor],
   templateUrl: './transaction-resume.component.html',
   styleUrl: './transaction-resume.component.css',
-  providers: [TransactionsResumeService],
 })
 export class TransactionResumeComponent implements OnInit {
   transactions: Transaction[] = [];
   currentAccountNumber: string = '';
 
-  constructor(
-    private transactionsResumeService: TransactionsResumeService,
-    private overviewService: OverviewService
-  ) {}
+  constructor(private overviewService: OverviewService) {}
 
   ngOnInit(): void {
-    this.transactionsResumeService.getTransactionsResume().subscribe({
+    this.overviewService.transactions.subscribe({
       next: (transactions) => {
         this.transactions = transactions.map((transaction) => ({
           ...transaction,

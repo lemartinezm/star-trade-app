@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Account } from './interfaces/account.interface';
 import { HttpClient } from '@angular/common/http';
 import { Transaction } from './interfaces/transaction.interface';
+import { PaginatedResponse } from '../../../shared/interfaces/response.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -30,10 +31,13 @@ export class OverviewService {
   }
 
   getTransactionsResume() {
-    return this.http.get<Transaction[]>('http://localhost:3000/transactions', {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
-      },
-    });
+    return this.http.get<PaginatedResponse<Transaction>>(
+      'http://localhost:3000/transactions',
+      {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
+        },
+      }
+    );
   }
 }

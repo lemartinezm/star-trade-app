@@ -22,7 +22,8 @@ export class OverviewComponent implements OnInit {
   constructor(private overviewService: OverviewService) {}
 
   ngOnInit(): void {
-    this.overviewService.getTransactionsResume().subscribe((transactions) => {
+    this.overviewService.getTransactionsResume().subscribe((response) => {
+      const transactions = response.items;
       this.overviewService.updateTransactions(transactions);
     });
   }
