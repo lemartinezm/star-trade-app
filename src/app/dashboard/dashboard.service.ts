@@ -1,21 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DashboardService {
-  constructor(private http: HttpClient, private router: Router) {}
+  baseUrl = environment.apiUrl;
+
+  constructor(private http: HttpClient) {}
 
   verifyToken(token: string) {
-    return this.http.get<{ message: string }>(
-      'http://localhost:3000/auth/token',
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    return this.http.get<{ message: string }>(`${this.baseUrl}/auth/token`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   }
 }
