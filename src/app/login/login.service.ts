@@ -1,16 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
+  baseUrlApi = environment.apiUrl;
+
   constructor(private http: HttpClient, private router: Router) {}
 
   login(email: string, password: string) {
     return this.http
-      .post<{ accessToken: string }>('http://localhost:3000/auth/login', {
+      .post<{ accessToken: string }>(`${this.baseUrlApi}/auth/login`, {
         email,
         password,
       })
@@ -24,13 +27,10 @@ export class LoginService {
   }
 
   verifyToken(token: string) {
-    return this.http.get<{ message: string }>(
-      'http://localhost:3000/auth/token',
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    return this.http.get<{ message: string }>(`${this.baseUrlApi}/auth/token`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   }
 }

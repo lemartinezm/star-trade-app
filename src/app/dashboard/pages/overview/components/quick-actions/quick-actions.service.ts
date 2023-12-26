@@ -1,10 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QuickActionsService {
+  baseUrlApi = environment.apiUrl;
+
   constructor(private http: HttpClient) {}
 
   sendMoney(sourceAccount: string, destinationAccount: string, amount: number) {
@@ -15,7 +18,7 @@ export class QuickActionsService {
       description: string | null;
       status: string;
     }>(
-      'http://localhost:3000/transactions',
+      `${this.baseUrlApi}/transactions`,
       {
         sourceAccountNumber: sourceAccount,
         destinationAccountNumber: destinationAccount,

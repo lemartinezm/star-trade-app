@@ -4,11 +4,13 @@ import { Account } from './interfaces/account.interface';
 import { HttpClient } from '@angular/common/http';
 import { Transaction } from './interfaces/transaction.interface';
 import { PaginatedResponse } from '../../../shared/interfaces/response.interface';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OverviewService {
+  baseUrlApi = environment.apiUrl;
   private initialState = new BehaviorSubject<string>('');
   currentState = this.initialState.asObservable();
   private initialUserAccounts = new BehaviorSubject<Account[]>([]);
@@ -32,7 +34,7 @@ export class OverviewService {
 
   getTransactionsResume() {
     return this.http.get<PaginatedResponse<Transaction>>(
-      'http://localhost:3000/transactions',
+      `${this.baseUrlApi}/transactions`,
       {
         headers: {
           Authorization: 'Bearer ' + localStorage.getItem('accessToken'),

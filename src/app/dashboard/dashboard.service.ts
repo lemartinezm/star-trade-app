@@ -6,12 +6,12 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class DashboardService {
-  baseUrl = environment.apiUrl;
+  baseUrlApi = environment.apiUrl;
 
   constructor(private http: HttpClient) {}
 
   verifyToken(token: string) {
-    return this.http.get<{ message: string }>(`${this.baseUrl}/auth/token`, {
+    return this.http.get<{ message: string }>(`${this.baseUrlApi}/auth/token`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
