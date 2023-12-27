@@ -1,1 +1,46 @@
-<p>transactions works!</p>
+<div class="background">
+  <div class="container">
+    <h2 class="container-title">Transactions</h2>
+
+    <div class="transactions-table-container">
+      <table class="transactions-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Account</th>
+            <th>To/From</th>
+            <th>Description</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaction of transactions">
+            <td class="transaction-date">{{transaction.createdAt}}</td>
+            <td>
+              <div
+                [ngClass]="['transaction-status', 'transaction-status-' + transaction.status]">{{transaction.status}}</div>
+            </td>
+
+            @if
+            (accountNumbers.includes(transaction.sourceAccount.accountNumber))
+            {
+            <td>{{transaction.sourceAccount.accountNumber}}</td>
+            <td>{{transaction.destinationAccount.accountNumber}}</td>
+            } @else {
+            <td>{{transaction.destinationAccount.accountNumber}}</td>
+            <td>{{transaction.sourceAccount.accountNumber}}</td>
+            }
+            @if (transaction.description) {
+            <td class="transaction-description">{{transaction.description}}</td>
+            } @else {
+            <td class="transaction-description">-</td>
+            }
+            <td class="transaction-amount">{{transaction.amount}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
