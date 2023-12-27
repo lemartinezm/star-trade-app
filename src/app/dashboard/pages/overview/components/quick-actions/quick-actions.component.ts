@@ -57,7 +57,6 @@ export class QuickActionsComponent implements OnInit {
   handleSubmit() {
     const { amount, destinationAccount, sourceAccount, type } =
       this.formGroup.value;
-    console.log(this.formGroup.value);
     if (type === 'send' && sourceAccount && destinationAccount && amount) {
       this.quickActionsService
         .sendMoney(sourceAccount, destinationAccount, amount)

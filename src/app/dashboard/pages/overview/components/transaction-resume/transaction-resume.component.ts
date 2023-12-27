@@ -19,16 +19,18 @@ export class TransactionResumeComponent implements OnInit {
   ngOnInit(): void {
     this.overviewService.transactions.subscribe({
       next: (transactions) => {
-        this.transactions = transactions.map((transaction) => ({
-          ...transaction,
-          createdAt: new Date(transaction.createdAt).toLocaleString('en-US', {
-            day: 'numeric',
-            month: 'short',
-            hour: 'numeric',
-            minute: 'numeric',
-            hour12: true,
-          }),
-        }));
+        this.transactions = transactions
+          .map((transaction) => ({
+            ...transaction,
+            createdAt: new Date(transaction.createdAt).toLocaleString('en-US', {
+              day: 'numeric',
+              month: 'short',
+              hour: 'numeric',
+              minute: 'numeric',
+              hour12: true,
+            }),
+          }))
+          .slice(0, 3);
       },
       error: (error) => {
         console.error(error);
