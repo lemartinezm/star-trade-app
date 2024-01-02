@@ -3,7 +3,8 @@
     <h2 class="container-title">Transactions</h2>
 
     <div class="transactions-table-container">
-      <form class="transactions-table-filters">
+      <form class="transactions-table-filters" [formGroup]="filtersForm"
+        (ngSubmit)="handleFilter()">
         <app-form-select [options]="transactionsTypeOptions"
           label="Transactions type" name="transactionsType"
           formSelectId="transactionsType"
@@ -16,6 +17,8 @@
         <app-form-input label="End date" inputId="endDate" name="endDate"
           type="date"
           [inputControl]="filtersForm.controls.endDate"></app-form-input>
+
+        <app-button type="submit" text="Filter"></app-button>
       </form>
 
       <div class="transactions-table-container-overflow">

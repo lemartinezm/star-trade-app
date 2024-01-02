@@ -7,6 +7,7 @@ import { MetaData } from '../../../shared/interfaces/response.interface';
 import { FormInputComponent } from '../../../shared/components/form-input/form-input.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormSelectComponent } from '../../../shared/components/form/form-select/form-select.component';
+import { ButtonComponent } from '../../../shared/components/button/button.component';
 
 @Component({
   selector: 'app-transactions',
@@ -16,6 +17,7 @@ import { FormSelectComponent } from '../../../shared/components/form/form-select
     NgClass,
     FormInputComponent,
     FormSelectComponent,
+    ButtonComponent,
     ReactiveFormsModule,
     CurrencyPipe,
     DatePipe,
@@ -70,6 +72,27 @@ export class TransactionsComponent implements OnInit {
         'all',
         undefined,
         undefined
+      )
+      .subscribe((response) => {
+        this.meta = response.meta;
+        this.transactions = response.items;
+      });
+  }
+
+  handleFilter() {
+    const { transactionsType, startDate, endDate } = this.filtersForm.value;
+    let parsedStartDate: number | undefined = undefined;
+    let parsedEndDate: number | undefined = undefined;
+    if (startDate) parsedStartDate = new Date(startDate).getTime();
+    if (endDate) parsedEndDate = new Date(endDate).getTime();
+
+    this.transactionsService
+      .getTransactions(
+        1,
+        this.meta.itemsPerPage,
+        transactionsType || 'all',
+        parsedStartDate,
+        parsedEndDate
       )
       .subscribe((response) => {
         this.meta = response.meta;
