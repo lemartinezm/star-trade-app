@@ -23,11 +23,10 @@ export class TransactionsComponent implements OnInit {
     hasPreviousPage: false,
     totalItems: 0,
     totalPages: 0,
-    itemsPerPage: 1,
+    itemsPerPage: 8,
     nextPage: 1,
     previousPage: 1,
   };
-  // TODO: terminar la paginacion
 
   constructor(private transactionsService: TransactionsService) {}
 
