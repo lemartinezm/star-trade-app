@@ -32,7 +32,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let transaction of transactions">
-              <td class="transaction-date">{{transaction.createdAt}}</td>
+              <td class="transaction-date">{{transaction.createdAt | date :
+                "MMM d, y h:mm a"}}</td>
               <td>
                 <div
                   [ngClass]="['transaction-status', 'transaction-status-' + transaction.status]">{{transaction.status}}</div>
@@ -53,7 +54,8 @@
               } @else {
               <td class="transaction-description">-</td>
               }
-              <td class="transaction-amount">{{transaction.amount}}</td>
+              <td class="transaction-amount">{{transaction.amount | currency :
+                'USD'}}</td>
             </tr>
           </tbody>
         </table>

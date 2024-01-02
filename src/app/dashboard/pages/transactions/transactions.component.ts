@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Transaction } from '../overview/interfaces/transaction.interface';
 import { TransactionsService } from './transactions.service';
-import { NgClass, NgFor } from '@angular/common';
+import { CurrencyPipe, DatePipe, NgClass, NgFor } from '@angular/common';
 import { Account } from '../overview/interfaces/account.interface';
 import { MetaData } from '../../../shared/interfaces/response.interface';
 import { FormInputComponent } from '../../../shared/components/form-input/form-input.component';
@@ -17,6 +17,8 @@ import { FormSelectComponent } from '../../../shared/components/form/form-select
     FormInputComponent,
     FormSelectComponent,
     ReactiveFormsModule,
+    CurrencyPipe,
+    DatePipe,
   ],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.css',
@@ -71,18 +73,7 @@ export class TransactionsComponent implements OnInit {
       )
       .subscribe((response) => {
         this.meta = response.meta;
-
-        this.transactions = response.items.map((transaction) => ({
-          ...transaction,
-          createdAt: new Date(transaction.createdAt).toLocaleString('en-US', {
-            dateStyle: 'medium',
-            timeStyle: 'short',
-          }),
-          amount: new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-          }).format(Number(transaction.amount)),
-        }));
+        this.transactions = response.items;
       });
   }
 }
