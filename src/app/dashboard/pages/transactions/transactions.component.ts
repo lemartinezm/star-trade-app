@@ -3,6 +3,7 @@ import { Transaction } from '../overview/interfaces/transaction.interface';
 import { TransactionsService } from './transactions.service';
 import { NgClass, NgFor } from '@angular/common';
 import { Account } from '../overview/interfaces/account.interface';
+import { MetaData } from '../../../shared/interfaces/response.interface';
 
 @Component({
   selector: 'app-transactions',
@@ -16,6 +17,17 @@ export class TransactionsComponent implements OnInit {
   transactions: Transaction[] = [];
   accounts: Account[] = [];
   accountNumbers: string[] = [];
+  meta: MetaData = {
+    currentPage: 1,
+    hasNextPage: false,
+    hasPreviousPage: false,
+    totalItems: 0,
+    totalPages: 0,
+    itemsPerPage: 1,
+    nextPage: 1,
+    previousPage: 1,
+  };
+  // TODO: terminar la paginacion
 
   constructor(private transactionsService: TransactionsService) {}
 
@@ -25,9 +37,21 @@ export class TransactionsComponent implements OnInit {
       this.accountNumbers = accounts.map((account) => account.accountNumber);
     });
 
+    this.updateTransactions(this.meta.currentPage);
+  }
+
+  updateTransactions(page: number) {
     this.transactionsService
-      .getTransactions(1, 10, 'all', undefined, undefined)
+      .getTransactions(
+        page,
+        this.meta.itemsPerPage,
+        'all',
+        undefined,
+        undefined
+      )
       .subscribe((response) => {
+        this.meta = response.meta;
+
         this.transactions = response.items.map((transaction) => ({
           ...transaction,
           createdAt: new Date(transaction.createdAt).toLocaleString('en-US', {
