@@ -3,6 +3,21 @@
     <h2 class="container-title">Transactions</h2>
 
     <div class="transactions-table-container">
+      <form class="transactions-table-filters">
+        <app-form-select [options]="transactionsTypeOptions"
+          label="Transactions type" name="transactionsType"
+          formSelectId="transactionsType"
+          [selectControl]="filtersForm.controls.transactionsType"></app-form-select>
+
+        <app-form-input label="Start date" inputId="startDate" name="startDate"
+          type="date"
+          [inputControl]="filtersForm.controls.startDate"></app-form-input>
+
+        <app-form-input label="End date" inputId="endDate" name="endDate"
+          type="date"
+          [inputControl]="filtersForm.controls.endDate"></app-form-input>
+      </form>
+
       <div class="transactions-table-container-overflow">
         <table class="transactions-table">
           <thead>
