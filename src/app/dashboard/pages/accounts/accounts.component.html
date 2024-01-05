@@ -30,10 +30,8 @@
     }
   </div>
 
-  <!-- TODO: agregar una tarjeta con proximamente? -->
-
   <div class="account-details-container">
-    <h3>{{accountSelected?.accountLabel || 'Account'}}</h3>
+    <h3>Account / {{accountSelected?.accountLabel || 'Account Name'}}</h3>
     <p>{{accountSelected?.balance | currency : 'USD'}}</p>
 
     <div class="operations-buttons-group">
@@ -95,5 +93,13 @@
     @if (tabSelected === 'services') {
     <div>Not implemented</div>
     }
+  </div>
+
+  <div class="account-card-container">
+    <h3>Card Details</h3>
+    <div class="card">
+      <span class="card-type">BIZA</span>
+      <span class="card-number">No card associated</span>
+    </div>
   </div>
 </main>

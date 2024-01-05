@@ -126,12 +126,61 @@
       gap: 1rem;
     }
   }
+
+  & .account-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    padding: 1rem;
+
+    & .card {
+      min-width: 10rem;
+      max-width: 20rem;
+      background-color: var(--black);
+      min-height: 10rem;
+      border: 1px solid var(--black-5);
+      border-radius: 0.5rem;
+      color: var(--white);
+      position: relative;
+      background-image: url("../../../../assets/star-trade-white.png");
+      background-repeat: no-repeat;
+      background-position: top 1rem left 1rem;
+      background-size: 2.5rem;
+
+      & .card-text {
+        position: absolute;
+        width: fit-content;
+        height: fit-content;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+
+      & .card-type {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        font-weight: 700;
+      }
+
+      & .card-number {
+        position: absolute;
+        bottom: 1rem;
+        left: 1rem;
+        font-weight: 500;
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 768px) {
   .container {
     padding: 2rem;
-    grid-template-areas: "title title" "left-bar content";
+    grid-template-areas: "title title" "left-bar content" "left-bar card-container";
     grid-template-columns: 15rem 1fr;
     overflow-y: auto;
 
@@ -140,11 +189,16 @@
     }
 
     & .accounts-container {
+      grid-area: left-bar;
       flex-direction: column;
     }
 
     & .account-details-container {
       grid-area: content;
+    }
+
+    & .account-card-container {
+      grid-area: card-container;
     }
   }
 }
