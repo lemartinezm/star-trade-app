@@ -1,67 +1,69 @@
-<header [class]="isHeaderOpen ? 'header active' : 'header'">
-  <img src="../../../../assets/star-trade-logo.png" alt="Star Trade Logo"
-    width="48" height="48">
-  <nav>
-    <ul>
-      <li>
-        <a routerLink="/" routerLinkActive="link-active"
-          [routerLinkActiveOptions]="{exact: true}">Overview</a>
-      </li>
-      <li>
-        <a routerLink="/accounts" routerLinkActive="link-active"
-          [routerLinkActiveOptions]="{exact: true}">Accounts</a>
-      </li>
-      <li>
-        <a routerLink="/transactions" routerLinkActive="link-active"
-          [routerLinkActiveOptions]="{exact: true}">Transactions</a>
-      </li>
-      <li>
-        <a routerLink="/contacts" routerLinkActive="link-active"
-          [routerLinkActiveOptions]="{exact: true}">Contacts</a>
-      </li>
-    </ul>
-  </nav>
-  <div>
-    <ul>
-      <li>
-        <button class="icon-button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-            viewBox="0 0 24 24">
-            <g transform="translate(24 0) scale(-1 1)">
-              <path
-                fill="currentColor"
-                d="M6.455 19L2 22.5V4a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H6.455Zm-.692-2H20V5H4v13.385L5.763 17ZM11 10h2v2h-2v-2Zm-4 0h2v2H7v-2Zm8 0h2v2h-2v-2Z" />
-            </g>
-          </svg>
-        </button>
-      </li>
-      <li>
-        <button class="icon-button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-            viewBox="0 0 24 24">
-            <path fill="currentColor"
-              d="M10 21h4c0 1.1-.9 2-2 2s-2-.9-2-2m11-2v1H3v-1l2-2v-6c0-3.1 2-5.8 5-6.7V4c0-1.1.9-2 2-2s2 .9 2 2v.3c3 .9 5 3.6 5 6.7v6l2 2m-4-8c0-2.8-2.2-5-5-5s-5 2.2-5 5v7h10v-7Z" />
-          </svg>
-        </button>
-      </li>
-      <li>
-        <button class="icon-button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-            viewBox="0 0 24 24">
-            <g fill="none" stroke="currentColor" stroke-width="2">
-              <path
-                stroke-linejoin="round"
-                d="M4 18a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" />
-              <circle
-                cx="12" cy="7" r="3" />
-            </g>
-          </svg>
-        </button>
-      </li>
-    </ul>
-  </div>
+<div class="header-container">
+  <header [class]="isHeaderOpen ? 'header active' : 'header'">
+    <img src="../../../../assets/star-trade-logo.png" alt="Star Trade Logo"
+      width="48" height="48">
+    <nav>
+      <ul>
+        <li>
+          <a routerLink="/" routerLinkActive="link-active"
+            [routerLinkActiveOptions]="{exact: true}">Overview</a>
+        </li>
+        <li>
+          <a routerLink="/accounts" routerLinkActive="link-active"
+            [routerLinkActiveOptions]="{exact: true}">Accounts</a>
+        </li>
+        <li>
+          <a routerLink="/transactions" routerLinkActive="link-active"
+            [routerLinkActiveOptions]="{exact: true}">Transactions</a>
+        </li>
+        <li>
+          <a routerLink="/contacts" routerLinkActive="link-active"
+            [routerLinkActiveOptions]="{exact: true}">Contacts</a>
+        </li>
+      </ul>
+    </nav>
+    <div>
+      <ul>
+        <li>
+          <button class="icon-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              viewBox="0 0 24 24">
+              <g transform="translate(24 0) scale(-1 1)">
+                <path
+                  fill="currentColor"
+                  d="M6.455 19L2 22.5V4a1 1 0 0 1 1-1h18a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H6.455Zm-.692-2H20V5H4v13.385L5.763 17ZM11 10h2v2h-2v-2Zm-4 0h2v2H7v-2Zm8 0h2v2h-2v-2Z" />
+              </g>
+            </svg>
+          </button>
+        </li>
+        <li>
+          <button class="icon-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              viewBox="0 0 24 24">
+              <path fill="currentColor"
+                d="M10 21h4c0 1.1-.9 2-2 2s-2-.9-2-2m11-2v1H3v-1l2-2v-6c0-3.1 2-5.8 5-6.7V4c0-1.1.9-2 2-2s2 .9 2 2v.3c3 .9 5 3.6 5 6.7v6l2 2m-4-8c0-2.8-2.2-5-5-5s-5 2.2-5 5v7h10v-7Z" />
+            </svg>
+          </button>
+        </li>
+        <li>
+          <button class="icon-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              viewBox="0 0 24 24">
+              <g fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  stroke-linejoin="round"
+                  d="M4 18a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" />
+                <circle
+                  cx="12" cy="7" r="3" />
+              </g>
+            </svg>
+          </button>
+        </li>
+      </ul>
+    </div>
 
-</header>
+  </header>
+</div>
 
 <button [class]="isHeaderOpen ? 'toggle-menu active': 'toggle-menu'"
   (click)="toggleHeader()">
