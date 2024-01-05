@@ -1,0 +1,140 @@
+.background {
+  background-color: var(--background-light);
+  & .container {
+    display: grid;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    overflow: hidden;
+
+    & .accounts-container {
+      overflow-x: auto;
+      display: flex;
+      gap: 1rem;
+
+      & .account-container {
+        cursor: pointer;
+        border: none;
+        background-color: var(--green-pastel);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        border-radius: 0.5rem;
+        min-width: 15rem;
+
+        & .balance-currency {
+          display: flex;
+          gap: 0.5rem;
+
+          & span {
+            color: var(--black-50);
+            font-weight: 400;
+
+            &:nth-child(1) {
+              color: var(--green);
+              font-weight: 700;
+            }
+            &:nth-child(2) {
+              flex: 1;
+            }
+          }
+        }
+
+        & .account-balance {
+          margin-top: 0.5rem;
+          font-weight: 500;
+          font-size: 1rem;
+        }
+
+        & .total-balance {
+          font-size: 2.25rem;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+
+          & span {
+            display: flex;
+            align-items: center;
+
+            &.arrow-container-green {
+              background-color: var(--green);
+              border-radius: 50%;
+              padding: 0.25rem;
+            }
+          }
+        }
+      }
+
+      & .create-account-button {
+        background-color: var(--primary-color);
+        color: var(--white);
+        border: none;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        font-size: 1rem;
+        min-width: fit-content;
+      }
+    }
+
+    & .account-details-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background-color: var(--white);
+      border-radius: 0.5rem;
+      padding: 1rem;
+
+      & .operations-buttons-group {
+        & button {
+          cursor: pointer;
+          display: inline-flex;
+          gap: 0.25rem;
+          background-color: transparent;
+          border: 1px solid var(--black-10);
+          padding: 0.5rem 0.75rem;
+          font-size: 1rem;
+          transition: all 0.2s;
+          color: var(--black-75);
+
+          &:first-child {
+            border-radius: 0.5rem 0 0 0.5rem;
+            border-right: none;
+          }
+
+          &:last-child {
+            border-radius: 0 0.5rem 0.5rem 0;
+            border-left: none;
+          }
+
+          &[aria-selected="true"] {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+          }
+
+          &:disabled {
+            color: var(--black-25);
+            cursor: not-allowed;
+          }
+        }
+      }
+
+      & .form-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .background {
+    & .container {
+      padding: 2rem;
+    }
+  }
+}
