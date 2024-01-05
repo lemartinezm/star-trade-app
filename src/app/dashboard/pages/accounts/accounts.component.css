@@ -131,5 +131,20 @@
 @media screen and (min-width: 768px) {
   .container {
     padding: 2rem;
+    grid-template-areas: "title title" "left-bar content";
+    grid-template-columns: 15rem 1fr;
+    overflow-y: auto;
+
+    & .container-title {
+      grid-area: title;
+    }
+
+    & .accounts-container {
+      flex-direction: column;
+    }
+
+    & .account-details-container {
+      grid-area: content;
+    }
   }
 }
