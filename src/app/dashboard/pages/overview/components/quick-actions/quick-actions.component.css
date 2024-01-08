@@ -20,32 +20,30 @@
     border-radius: 0.5rem;
     gap: 0.5rem;
 
-    & .quick-action {
-      position: relative;
+    & button {
       cursor: pointer;
-      font-size: 1rem;
+      display: inline-flex;
+      gap: 0.25rem;
       background-color: transparent;
       font-weight: 500;
-      border-radius: 0.5rem;
-      padding: 0.5rem 1rem;
-      flex: 1;
-      color: var(--black-50);
-      text-align: center;
-      transition: all 0.2s;
+      font-size: 0.875rem;
       border: 1px solid transparent;
+      border-radius: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      transition: all 0.2s;
+      color: var(--black-100);
+      justify-content: center;
+      width: 100%;
 
-      & input {
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-
-      &.active {
+      &[aria-selected="true"] {
         background-color: var(--white);
-        color: var(--black);
         border: 1px solid var(--black-10);
         box-shadow: 4px 4px 8px -8px var(--black-50);
+      }
+
+      &:disabled {
+        color: var(--black-25);
+        cursor: not-allowed;
       }
     }
   }

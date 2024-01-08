@@ -2,21 +2,13 @@
   <h3 class="quick-actions-title">Quick Actions</h3>
   <form class="form-container" [formGroup]="formGroup"
     (ngSubmit)="handleSubmit()">
-    <div class="quick-actions-selector">
-      <label
-        [ngClass]="['quick-action', activeButton === 'send' ? 'active' : '']"
-        (click)="handleChangeActionType($event)">
-        Send
-        <input type="radio" name="quickActionType" id="quickActionSend"
-          value="send" hidden [formControl]="formGroup.controls.type">
-      </label>
-      <label
-        [ngClass]="['quick-action', activeButton === 'receive' ? 'active' : '']"
-        (click)="handleChangeActionType($event)">
-        Receive
-        <input type="radio" name="quickActionType" id="quickActionReceive"
-          value="receive" hidden [formControl]="formGroup.controls.type">
-      </label>
+    <div class="quick-actions-selector" role="tablist">
+      <button type="button" role="tab"
+        [attr.aria-selected]="activeButton === 'send'"
+        (click)="handleChangeActionType('send')">Send</button>
+      <button type="button" role="tab"
+        [attr.aria-selected]="activeButton === 'receive'"
+        (click)="handleChangeActionType('receive')" disabled>Receive</button>
     </div>
     @if (activeButton === 'send') {
     <app-form-select [options]="accountOptions" label="Source Account"

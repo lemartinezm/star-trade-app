@@ -49,9 +49,9 @@ export class QuickActionsComponent implements OnInit {
     });
   }
 
-  handleChangeActionType(e: Event) {
-    const target = e.target as HTMLButtonElement;
-    this.activeButton = target.value;
+  handleChangeActionType(type: string) {
+    this.activeButton = type;
+    this.formGroup.controls.type.setValue(type);
   }
 
   handleSubmit() {
