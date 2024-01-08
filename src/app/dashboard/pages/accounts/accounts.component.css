@@ -4,76 +4,85 @@
   padding: 2rem 1rem;
   max-width: 1280px;
   margin: 0 auto;
-  overflow: hidden;
 
-  & .accounts-container {
-    overflow-x: auto;
+  & .select-accounts-container {
     display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    padding: 1rem;
+    border-radius: 0.5rem;
     gap: 1rem;
+    overflow: hidden;
 
-    & .account-container {
-      cursor: pointer;
-      border: none;
-      background-color: var(--green-pastel);
-      padding: 1rem;
+    & .accounts-container {
+      overflow-x: auto;
       display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      border-radius: 0.5rem;
-      min-width: 15rem;
+      gap: 1rem;
 
-      & .balance-currency {
+      & .account-container {
+        cursor: pointer;
+        border: none;
+        background-color: var(--green-pastel);
+        padding: 1rem;
         display: flex;
+        flex-direction: column;
         gap: 0.5rem;
+        border-radius: 0.5rem;
+        min-width: 15rem;
 
-        & span {
-          color: var(--black-50);
-          font-weight: 400;
+        & .balance-currency {
+          display: flex;
+          gap: 0.5rem;
 
-          &:nth-child(1) {
-            color: var(--green);
-            font-weight: 700;
-          }
-          &:nth-child(2) {
-            flex: 1;
+          & span {
+            color: var(--black-50);
+            font-weight: 400;
+
+            &:nth-child(1) {
+              color: var(--green);
+              font-weight: 700;
+            }
+            &:nth-child(2) {
+              flex: 1;
+            }
           }
         }
-      }
 
-      & .account-balance {
-        margin-top: 0.5rem;
-        font-weight: 500;
-        font-size: 1rem;
-      }
+        & .account-balance {
+          margin-top: 0.5rem;
+          font-weight: 500;
+          font-size: 1rem;
+        }
 
-      & .total-balance {
-        font-size: 2.25rem;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-
-        & span {
+        & .total-balance {
+          font-size: 2.25rem;
+          font-weight: 500;
           display: flex;
           align-items: center;
+          gap: 1rem;
 
-          &.arrow-container-green {
-            background-color: var(--green);
-            border-radius: 50%;
-            padding: 0.25rem;
+          & span {
+            display: flex;
+            align-items: center;
+
+            &.arrow-container-green {
+              background-color: var(--green);
+              border-radius: 50%;
+              padding: 0.25rem;
+            }
           }
         }
       }
-    }
 
-    & .create-account-button {
-      background-color: var(--primary-color);
-      color: var(--white);
-      border: none;
-      border-radius: 0.5rem;
-      padding: 1rem;
-      font-size: 1rem;
-      min-width: fit-content;
+      & .create-account-button {
+        background-color: var(--primary-color);
+        color: var(--white);
+        border: none;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        font-size: 1rem;
+        min-width: fit-content;
+      }
     }
   }
 
@@ -85,7 +94,22 @@
     border-radius: 0.5rem;
     padding: 1rem;
 
+    & .account-details-balance {
+      font-size: 2.25rem;
+      font-weight: 500;
+    }
+
+    & .account-details-account-number-container {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
     & .operations-buttons-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      max-width: 30rem;
+
       & button {
         cursor: pointer;
         display: inline-flex;
@@ -96,6 +120,7 @@
         font-size: 1rem;
         transition: all 0.2s;
         color: var(--black-75);
+        justify-content: center;
 
         &:first-child {
           border-radius: 0.5rem 0 0 0.5rem;
@@ -124,6 +149,7 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      max-width: 30rem;
     }
   }
 
@@ -181,16 +207,19 @@
   .container {
     padding: 2rem;
     grid-template-areas: "title title" "left-bar content" "left-bar card-container";
-    grid-template-columns: 15rem 1fr;
+    grid-template-columns: 18rem 1fr;
     overflow-y: auto;
 
     & .container-title {
       grid-area: title;
     }
 
-    & .accounts-container {
+    & .select-accounts-container {
       grid-area: left-bar;
-      flex-direction: column;
+
+      & .accounts-container {
+        flex-direction: column;
+      }
     }
 
     & .account-details-container {

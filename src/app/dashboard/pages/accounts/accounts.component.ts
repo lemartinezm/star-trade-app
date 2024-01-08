@@ -7,6 +7,7 @@ import { FormSelectComponent } from '../../../shared/components/form/form-select
 import { FormInputComponent } from '../../../shared/components/form-input/form-input.component';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 import { TransactionsService } from '../../../shared/services/transactions/transactions.service';
+import { CopyClipboardComponent } from '../../../shared/components/copy-clipboard/copy-clipboard.component';
 
 @Component({
   selector: 'app-accounts',
@@ -19,6 +20,7 @@ import { TransactionsService } from '../../../shared/services/transactions/trans
     FormSelectComponent,
     FormInputComponent,
     ButtonComponent,
+    CopyClipboardComponent,
   ],
   templateUrl: './accounts.component.html',
   styleUrl: './accounts.component.css',

@@ -1,38 +1,50 @@
 <main class="container">
   <h2 class="container-title">Accounts</h2>
-  <div class="accounts-container" role="tablist">
-    <button class="account-container" *ngFor="let account of userAccounts"
-      (click)="handleChangeAccount(account)" role="tab">
-      <div class="balance-currency">
-        <span>$</span>
-        <span>U.S. Dollar</span>
-        <span>USD</span>
-      </div>
-      <h3 class="account-balance">Total Balance</h3>
-      <div class="total-balance">
-        <span>{{account.balance}}</span>
-        <span class="arrow-container-green">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-            viewBox="0 0 24 24"><g transform="translate(0 24) scale(1 -1)">
-              <path
-                fill="white"
-                d="M11 4h2v12l5.5-5.5l1.42 1.42L12 19.84l-7.92-7.92L5.5 10.5L11 16V4Z" />
-            </g>
-          </svg>
-        </span>
-      </div>
-      <p>{{account.accountNumber}}</p>
-    </button>
+  <div class="select-accounts-container" role="tablist">
+    <h3>Select Account</h3>
+    <div class="accounts-container">
+      <button class="account-container" *ngFor="let account of userAccounts"
+        (click)="handleChangeAccount(account)" role="tab">
+        <div class="balance-currency">
+          <span>$</span>
+          <span>U.S. Dollar</span>
+          <span>USD</span>
+        </div>
+        <h3 class="account-balance">Total Balance</h3>
+        <div class="total-balance">
+          <span>{{account.balance}}</span>
+          <span class="arrow-container-green">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24"><g transform="translate(0 24) scale(1 -1)">
+                <path
+                  fill="white"
+                  d="M11 4h2v12l5.5-5.5l1.42 1.42L12 19.84l-7.92-7.92L5.5 10.5L11 16V4Z" />
+              </g>
+            </svg>
+          </span>
+        </div>
+        <p>{{account.accountNumber}}</p>
+      </button>
 
-    @if (userAccounts.length < 3) {
-    <button class="create-account-button" (click)="handleNewAccount()">New
-      Account</button>
-    }
+      @if (userAccounts.length < 3) {
+      <button class="create-account-button" (click)="handleNewAccount()">New
+        Account</button>
+      }
+    </div>
   </div>
 
   <div class="account-details-container">
     <h3>Account / {{accountSelected?.accountLabel || 'Account Name'}}</h3>
-    <p>{{accountSelected?.balance | currency : 'USD'}}</p>
+    <span class="account-details-balance">{{accountSelected?.balance | currency
+      : 'USD'}}</span>
+
+    <div class="account-details-account-number-container">
+      <span
+        class="account-details-account-number">
+        {{accountSelected?.accountNumber}}</span>
+      <app-copy-clipboard
+        valueToCopy={{accountSelected?.accountNumber}}></app-copy-clipboard>
+    </div>
 
     <div class="operations-buttons-group">
       <button role="tab" [attr.aria-selected]="tabSelected==='send'"
